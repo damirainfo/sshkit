@@ -132,7 +132,7 @@ module SSHKit
                 output << cmd
                 
                 if data =~ /\[sudo\] password for/
-                  ch.send_data "#{host.fetch(:sudo_password) || host.password}\n"
+                  ch.send_data "#{host.password}\n"
                 end
               end
               chan.on_extended_data do |ch, type, data|
