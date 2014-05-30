@@ -135,6 +135,8 @@ module SSHKit
                   ch.send_data "#{host.password}\n"
                 elsif data =~ /Press.\[ENTER\].to.continue/ || data.force_encoding('utf-8').match(/按回车继续/u)
                   ch.send_data "\n"
+                elsif data =~ /CTRL\+C.to.stop/
+                  ch.send_data "^C"
                 end
               end
               chan.on_extended_data do |ch, type, data|
